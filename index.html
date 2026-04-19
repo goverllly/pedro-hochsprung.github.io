@@ -1,1410 +1,631 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedro Hochsprung — Currículo</title>
+  <meta name="description" content="Portfólio e currículo de Pedro Henrique Troglio Hochsprung." />
+  <meta name="theme-color" content="#08141d" />
+  <title>Pedro Hochsprung | Infraestrutura Cloud</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    /* ============================================================
-       RESET & VARIABLES
-    ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --clr-bg:        #0a0e1a;
-      --clr-surface:   #111827;
-      --clr-card:      #1a2235;
-      --clr-border:    #1e2d45;
-      --clr-accent1:   #3b82f6;
-      --clr-accent2:   #8b5cf6;
-      --clr-accent3:   #06b6d4;
-      --clr-text:      #e2e8f0;
-      --clr-muted:     #94a3b8;
-      --clr-white:     #ffffff;
-      --gradient:      linear-gradient(135deg, var(--clr-accent1), var(--clr-accent2));
-      --gradient-cyan: linear-gradient(135deg, var(--clr-accent3), var(--clr-accent1));
-      --radius-md:     12px;
-      --radius-lg:     20px;
-      --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --shadow-glow:   0 0 40px rgba(59, 130, 246, 0.15);
-      --shadow-card:   0 8px 32px rgba(0, 0, 0, 0.4);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--clr-bg);
-      color: var(--clr-text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ============================================================
-       SCROLLBAR
-    ============================================================ */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--clr-bg); }
-    ::-webkit-scrollbar-thumb { background: var(--clr-accent1); border-radius: 3px; }
-
-    /* ============================================================
-       CANVAS BACKGROUND (particles)
-    ============================================================ */
-    #particles-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ============================================================
-       NAV
-    ============================================================ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 16px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      backdrop-filter: blur(20px);
-      background: rgba(10, 14, 26, 0.85);
-      border-bottom: 1px solid var(--clr-border);
-      transition: var(--transition);
-    }
-
-    .nav-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 1px;
-    }
-
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      color: var(--clr-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient);
-      transition: width var(--transition);
-      border-radius: 2px;
-    }
-    .nav-links a:hover { color: var(--clr-white); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    #hero {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 40px 60px;
-      text-align: center;
-    }
-
-    .hero-content { max-width: 860px; }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 100px;
-      border: 1px solid var(--clr-accent1);
-      color: var(--clr-accent1);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      animation: fadeDown 0.8s ease both;
-    }
-
-    .hero-badge i { font-size: 0.7rem; }
-
-    .hero-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 12px;
-      animation: fadeDown 0.9s ease 0.1s both;
-    }
-
-    .hero-title .gradient-text {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--clr-accent3);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      margin-bottom: 24px;
-      animation: fadeDown 1s ease 0.2s both;
-    }
-
-    .hero-desc {
-      color: var(--clr-muted);
-      font-size: 1.05rem;
-      max-width: 620px;
-      margin: 0 auto 40px;
-      animation: fadeDown 1s ease 0.3s both;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeDown 1s ease 0.4s both;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 100px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: var(--clr-white);
-      box-shadow: 0 4px 24px rgba(59, 130, 246, 0.4);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.6);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--clr-text);
-      border: 1px solid var(--clr-border);
-    }
-    .btn-outline:hover {
-      border-color: var(--clr-accent1);
-      color: var(--clr-white);
-      transform: translateY(-2px);
-      background: rgba(59, 130, 246, 0.08);
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      margin-top: 64px;
-      flex-wrap: wrap;
-      animation: fadeUp 1s ease 0.5s both;
-    }
-
-    .stat { text-align: center; }
-    .stat-number {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-    .stat-label { color: var(--clr-muted); font-size: 0.8rem; margin-top: 4px; }
-
-    /* ============================================================
-       SECTION LAYOUT
-    ============================================================ */
-    section {
-      position: relative;
-      z-index: 1;
-      padding: 100px 40px;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--clr-accent1);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .section-divider {
-      width: 56px;
-      height: 4px;
-      background: var(--gradient);
-      border-radius: 4px;
-      margin-bottom: 56px;
-    }
-
-    /* ============================================================
-       ABOUT
-    ============================================================ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .about-text p {
-      color: var(--clr-muted);
-      margin-bottom: 16px;
-      font-size: 1.02rem;
-      line-height: 1.8;
-    }
-
-    .about-interests {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .interest-tag {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 100px;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      color: var(--clr-accent1);
-      font-size: 0.82rem;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    .interest-tag:hover {
-      background: rgba(59, 130, 246, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .about-card {
-      background: var(--clr-card);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      box-shadow: var(--shadow-card);
-      position: relative;
-      overflow: hidden;
-    }
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient);
-    }
-
-    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .contact-list li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--clr-muted);
-      font-size: 0.92rem;
-    }
-    .contact-list li a {
-      color: var(--clr-muted);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    .contact-list li a:hover { color: var(--clr-accent1); }
-    .contact-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--clr-accent1);
-      flex-shrink: 0;
-      font-size: 0.85rem;
-    }
-
-    /* ============================================================
-       EXPERIENCE TIMELINE
-    ============================================================ */
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--clr-accent1), var(--clr-accent2), transparent);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 48px;
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -38px;
-      top: 6px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--gradient);
-      border: 3px solid var(--clr-bg);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-    }
-
-    .timeline-card {
-      background: var(--clr-card);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .timeline-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
-    }
-    .timeline-card:hover {
-      border-color: rgba(59, 130, 246, 0.35);
-      box-shadow: var(--shadow-glow);
-      transform: translateY(-3px);
-    }
-    .timeline-card:hover::before { transform: scaleX(1); }
-
-    .timeline-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-    }
-
-    .timeline-company {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--clr-white);
-    }
-
-    .timeline-role {
-      color: var(--clr-accent1);
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .timeline-period {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.18);
-      color: var(--clr-accent1);
-      font-size: 0.75rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .timeline-desc {
-      color: var(--clr-muted);
-      font-size: 0.9rem;
-      line-height: 1.75;
-    }
-
-    /* ============================================================
-       SKILLS
-    ============================================================ */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--clr-card);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius-md);
-      padding: 22px 24px;
-      transition: var(--transition);
-    }
-    .skill-card:hover {
-      border-color: rgba(59, 130, 246, 0.35);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-glow);
-    }
-
-    .skill-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .skill-name {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: 0.92rem;
-    }
-
-    .skill-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(59, 130, 246, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--clr-accent1);
-      font-size: 0.8rem;
-    }
-
-    .skill-pct {
-      color: var(--clr-accent1);
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .skill-bar {
-      height: 6px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .skill-fill {
-      height: 100%;
-      border-radius: 3px;
-      background: var(--gradient);
-      width: 0;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* ============================================================
-       CERTIFICATIONS
-    ============================================================ */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .cert-card {
-      background: var(--clr-card);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      transition: var(--transition);
-    }
-    .cert-card:hover {
-      border-color: rgba(139, 92, 246, 0.4);
-      transform: translateY(-3px);
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.12);
-    }
-
-    .cert-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--clr-accent2);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .cert-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--clr-white); margin-bottom: 4px; }
-    .cert-info p { font-size: 0.78rem; color: var(--clr-muted); }
-
-    /* ============================================================
-       CONTACT SECTION
-    ============================================================ */
-    #contact {
-      text-align: center;
-    }
-
-    .contact-cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .contact-card {
-      background: var(--clr-card);
-      border: 1px solid var(--clr-border);
-      border-radius: var(--radius-md);
-      padding: 28px 36px;
-      text-decoration: none;
-      color: var(--clr-text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      min-width: 160px;
-      transition: var(--transition);
-    }
-    .contact-card i { font-size: 1.6rem; transition: var(--transition); }
-    .contact-card span { font-size: 0.85rem; font-weight: 500; }
-    .contact-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-glow);
-    }
-    .contact-card.linkedin:hover { border-color: #0a66c2; }
-    .contact-card.linkedin i { color: #0a66c2; }
-    .contact-card.instagram:hover { border-color: #e1306c; }
-    .contact-card.instagram i { color: #e1306c; }
-    .contact-card.facebook:hover { border-color: #1877f2; }
-    .contact-card.facebook i { color: #1877f2; }
-    .contact-card.phone:hover { border-color: #25d366; }
-    .contact-card.phone i { color: #25d366; }
-    .contact-card.email:hover { border-color: var(--clr-accent1); }
-    .contact-card.email i { color: var(--clr-accent1); }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px;
-      border-top: 1px solid var(--clr-border);
-      color: var(--clr-muted);
-      font-size: 0.82rem;
-    }
-    footer span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 600;
-    }
-
-    /* ============================================================
-       ANIMATIONS
-    ============================================================ */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ============================================================
-       GLOW ORBS (decorative)
-    ============================================================ */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.08;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .orb-1 { width: 600px; height: 600px; background: var(--clr-accent1); top: -200px; right: -150px; }
-    .orb-2 { width: 500px; height: 500px; background: var(--clr-accent2); bottom: 20%; left: -200px; }
-    .orb-3 { width: 400px; height: 400px; background: var(--clr-accent3); top: 50%; left: 40%; }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
-      .nav-links { gap: 18px; }
-      .nav-links a { font-size: 0.78rem; }
-      section { padding: 70px 20px; }
-      .about-grid { grid-template-columns: 1fr; gap: 36px; }
-      .hero-stats { gap: 28px; }
-      #hero { padding: 100px 20px 60px; }
-    }
-
-    @media (max-width: 480px) {
-      .nav-links { display: none; }
-      .hero-cta { flex-direction: column; align-items: center; }
-    }
-
-    /* ============================================================
-       TYPING CURSOR
-    ============================================================ */
-    .cursor {
-      display: inline-block;
-      width: 3px;
-      height: 1em;
-      background: var(--clr-accent1);
-      margin-left: 4px;
-      vertical-align: middle;
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink {
-      from, to { opacity: 1; }
-      50% { opacity: 0; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-  <!-- Decorative Orbs -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
+  <nav id="top-nav">
+    <div class="nav-wrap">
+      <a href="#hero" class="logo">
+        <span class="logo-badge"><i class="fa-solid fa-cloud"></i></span>
+        Pedro Hochsprung
+      </a>
 
-  <!-- Particle Canvas -->
-  <canvas id="particles-canvas"></canvas>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#destaques">Destaques</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#certificados">Certificados</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
 
-  <!-- =========================================================
-       NAV
-  ========================================================= -->
-  <nav>
-    <div class="nav-logo">PH.</div>
-    <ul class="nav-links">
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#experiencia">Experiência</a></li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#certificados">Certificados</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Alternar tema">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="menu-btn" id="menu-toggle" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <!-- =========================================================
-       HERO
-  ========================================================= -->
-  <section id="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <i class="fa-solid fa-circle" style="color:#22c55e; font-size:8px;"></i>
-        Disponível para novas oportunidades
+  <main>
+    <section id="hero">
+      <div class="container hero-wrap">
+        <article class="hero-main reveal">
+          <div class="hero-chip">
+            <span class="availability-dot"></span>
+            Me conheça melhor
+          </div>
+
+          <h1 class="hero-title">
+            Pedro Henrique<br />
+            <span>Troglio Hochsprung</span>
+          </h1>
+
+          <p class="typed" id="typed-role"></p>
+
+          <p class="hero-text">
+            Analista de Infraestrutura Cloud na TOTVS com foco em continuidade operacional,
+            integrações críticas e automação de processos. Atuo com visão de negócio e técnica
+            para reduzir incidentes e acelerar a entrega de valor para clientes.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#experiencia" class="btn btn-primary js-ripple">
+              <i class="fa-solid fa-briefcase"></i>
+              Ver experiência
+            </a>
+            <a href="#contato" class="btn btn-secondary js-ripple">
+              <i class="fa-solid fa-paper-plane"></i>
+              Falar comigo
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong data-target="8">0</strong>
+              <span>Anos de experiência</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-target="6">0</strong>
+              <span>Empresas na jornada</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-target="10">0</strong>
+              <span>Tecnologias principais</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-side">
+          <div class="glass-card reveal tilt-card">
+            <h3 class="quick-title">Resumo rápido</h3>
+            <ul class="quick-list">
+              <li><i class="fa-solid fa-cloud"></i> Sustentação de ambientes FLUIG em TCLOUD</li>
+              <li><i class="fa-solid fa-diagram-project"></i> Integração entre sistemas e aplicações</li>
+              <li><i class="fa-solid fa-bolt"></i> Resposta rápida em regime de plantão</li>
+              <li><i class="fa-solid fa-gears"></i> Diagnóstico, prevenção e melhoria contínua</li>
+            </ul>
+          </div>
+
+          <div class="glass-card reveal tilt-card">
+            <h3 class="quick-title">Status profissional</h3>
+            <div class="availability">
+              <div>
+                <strong>Disponível para networking</strong><br />
+                <span style="color: var(--muted); font-size: 0.84rem;">Projetos e parcerias</span>
+              </div>
+              <span class="availability-dot"></span>
+            </div>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <h1 class="hero-title">
-        Pedro Henrique<br />
-        <span class="gradient-text">Troglio Hochsprung</span>
-      </h1>
-
-      <p class="hero-subtitle" id="typed-role"></p>
-
-      <p class="hero-desc">
-        Analista de Infraestrutura Cloud na TOTVS, apaixonado por tecnologia, automação e
-        pela integração de sistemas complexos. Determinado a evoluir e ajudar equipes a
-        entregarem o melhor resultado.
-      </p>
-
-      <div class="hero-cta">
-        <a href="#experiencia" class="btn btn-primary">
-          <i class="fa-solid fa-briefcase"></i> Ver Experiência
-        </a>
-        <a href="#contato" class="btn btn-outline">
-          <i class="fa-solid fa-paper-plane"></i> Entrar em Contato
-        </a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number" data-target="8">0</div>
-          <div class="stat-label">Anos de experiência</div>
+    <section id="sobre">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker"><i class="fa-solid fa-user"></i> Sobre mim</p>
+          <h2 class="section-title">Perfil profissional e pessoal</h2>
+          <p class="section-sub">
+            Sou uma pessoa colaborativa, empática e orientada a resultado. Gosto de ambientes
+            com propósito, processos bem definidos e espaço para evolução técnica.
+          </p>
+          <div class="section-line"></div>
         </div>
-        <div class="stat">
-          <div class="stat-number" data-target="6">0</div>
-          <div class="stat-label">Empresas</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number" data-target="10">0</div>
-          <div class="stat-label">Tecnologias dominadas</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- =========================================================
-       SOBRE
-  ========================================================= -->
-  <section id="sobre">
-    <div class="reveal">
-      <p class="section-label"><i class="fa-solid fa-user"></i> Sobre mim</p>
-      <h2 class="section-title">Quem sou eu?</h2>
-      <div class="section-divider"></div>
-    </div>
+        <div class="grid-2">
+          <article class="glass-card reveal about-text">
+            <p>
+              Aos 29 anos, uno disciplina e comunicação interpessoal para entregar soluções de alta performance. 
+              Atualmente, sou Analista de Infraestrutura Cloud na TOTVS, onde gerencio processos críticos, sustento ambientes complexos e lidero o onboarding técnico de clientes. 
+            </p>
+            <p>
+              Acredito que a tecnologia só atinge seu potencial máximo quando gera previsibilidade e impacto real no negócio. Busco evolução constante e foco na eficiência operacional.
+            </p>
+            <p>
+              Acredito em tecnologia como meio para resolver problemas reais com eficiência,
+              previsibilidade e impacto positivo para o negócio.
+            </p>
 
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>
-          Tenho 27 anos, sou casado com a Gabi e tenho muita vontade de crescer tanto
-          pessoalmente quanto profissionalmente. Sou visto por colegas e familiares como
-          uma pessoa solícita e empática — adjetivos que me moldaram e me trouxeram até
-          onde estou hoje.
-        </p>
-        <p>
-          Atualmente atuo como Analista de Infraestrutura Cloud na TOTVS, gerenciando
-          projetos FLUIG em ambiente cloud, integrando novos clientes ao TCLOUD e garantindo
-          a continuidade operacional da plataforma.
-        </p>
-        <p>
-          Determinado a ajudar as pessoas ao meu redor, acredito que com empatia e
-          dedicação é possível me tornar melhor a cada dia.
-        </p>
-        <div class="about-interests">
-          <span class="interest-tag"><i class="fa-solid fa-futbol"></i> Futevôlei</span>
-          <span class="interest-tag"><i class="fa-solid fa-gamepad"></i> Games</span>
-          <span class="interest-tag"><i class="fa-solid fa-cloud"></i> Cloud Computing</span>
-          <span class="interest-tag"><i class="fa-solid fa-code"></i> Desenvolvimento</span>
-          <span class="interest-tag"><i class="fa-solid fa-robot"></i> Automação</span>
+            <div class="chips">
+              <span class="chip"><i class="fa-solid fa-cloud"></i> Cloud Computing</span>
+              <span class="chip"><i class="fa-solid fa-robot"></i> Automação</span>
+              <span class="chip"><i class="fa-solid fa-code"></i> Desenvolvimento</span>
+              <span class="chip"><i class="fa-solid fa-brain"></i> IA</span>
+              <span class="chip"><i class="fa-solid fa-list-check"></i> Gestão</span>
+              <span class="chip"><i class="fa-solid fa-cubes"></i> Fluig</span>
+              <span class="chip"><i class="fa-solid fa-futbol"></i> Futevôlei</span>
+              <span class="chip"><i class="fa-solid fa-gamepad"></i> Games</span>
+            </div>
+          </article>
+
+          <article class="glass-card reveal">
+            <h3 class="quick-title" style="margin-bottom: 14px;">Contato direto</h3>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-ic"><i class="fa-solid fa-phone"></i></span>
+                <a href="tel:+5547996747579">+55 (47) 99674-7579</a>
+              </li>
+              <li>
+                <span class="contact-ic"><i class="fa-brands fa-linkedin"></i></span>
+                <a href="https://www.linkedin.com/in/pedro-hochsprung/" target="_blank" rel="noopener noreferrer">linkedin.com/in/pedro-hochsprung</a>
+              </li>
+              <li>
+                <span class="contact-ic"><i class="fa-brands fa-instagram"></i></span>
+                <a href="https://www.instagram.com/pedrohochsprung/" target="_blank" rel="noopener noreferrer">@pedrohochsprung</a>
+              </li>
+              <li>
+                <span class="contact-ic"><i class="fa-solid fa-location-dot"></i></span>
+                <span>Santa Catarina, Brasil</span>
+              </li>
+            </ul>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="reveal">
-        <div class="about-card">
-          <h3 style="margin-bottom:24px; font-family:'Space Grotesk',sans-serif; font-size:1.05rem;">
-            Informações de Contato
-          </h3>
-          <ul class="contact-list">
-            <li>
-              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-              <a href="tel:+5547996747579">+55 (47) 99674-7579</a>
-            </li>
-            <li>
-              <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
-              <a href="https://www.linkedin.com/in/pedro-hochsprung/" target="_blank">
-                /in/pedro-hochsprung
-              </a>
-            </li>
-            <li>
-              <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
-              <a href="https://www.instagram.com/pedrohochsprung/" target="_blank">
-                @pedrohochsprung
-              </a>
-            </li>
-            <li>
-              <div class="contact-icon"><i class="fa-brands fa-facebook"></i></div>
-              <a href="https://www.facebook.com/Peedro.hochsprung/" target="_blank">
-                /Peedro.hochsprung
-              </a>
-            </li>
-            <li>
-              <div class="contact-icon"><i class="fa-solid fa-map-pin"></i></div>
-              <span>Santa Catarina, Brasil</span>
-            </li>
+    <section id="destaques">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker"><i class="fa-solid fa-star"></i> Destaques</p>
+          <h2 class="section-title">Impacto que entrego no dia a dia</h2>
+          <p class="section-sub">
+            Foco em estabilidade, escala e qualidade operacional, com atenção especial para
+            ambientes críticos e experiência do cliente final.
+          </p>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="highlights">
+          <article class="highlight reveal tilt-card">
+            <h3>Onboarding técnico estruturado</h3>
+            <p>Integração de novos clientes no TCLOUD com checklist técnico, validações e documentação.</p>
+            <small>Entrega mais previsível</small>
+          </article>
+
+          <article class="highlight reveal tilt-card">
+            <h3>Sustentação com foco em SLA</h3>
+            <p>Atuação proativa em chamados e plantões para reduzir indisponibilidade e tempo de resposta.</p>
+            <small>Menos interrupções</small>
+          </article>
+
+          <article class="highlight reveal tilt-card">
+            <h3>Conexão entre áreas</h3>
+            <p>Trabalho próximo com times técnicos e de negócio para alinhar prioridade, risco e execução.</p>
+            <small>Comunicação clara</small>
+          </article>
+
+          <article class="highlight reveal tilt-card">
+            <h3>Criação do S.P.I.D.E.R</h3>
+            <p>Aplicação web para gestão de certificados digitais, usada no suporte a trocas com domínio próprio.</p>
+            <small>Menos erro operacional</small>
+          </article>
+
+          <article class="highlight reveal tilt-card">
+            <h3>TCPING Web e Desktop</h3>
+            <p>Ferramenta para validar conectividade em RDMs, adotada pelo time Fluig/PIMS e outras equipes.</p>
+            <small>Diagnóstico mais rápido</small>
+          </article>
+
+          <article class="highlight reveal tilt-card">
+            <h3>Migrações críticas para TCLOUD</h3>
+            <p>Atuação do kickoff técnico ao go-live com operação assistida em migrações de clientes Fluig.</p>
+            <small>Escala com estabilidade</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker"><i class="fa-solid fa-briefcase"></i> Carreira</p>
+          <h2 class="section-title">Experiência profissional</h2>
+          <p class="section-sub">
+            Trajetória marcada por evolução técnica, versatilidade e comprometimento com
+            resultados consistentes em diferentes contextos.
+          </p>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="experience-notes reveal">
+          <h3>Atuação estratégica e operacional na TOTVS</h3>
+          <ul class="key-points">
+            <li><i class="fa-solid fa-check"></i> Desenvolvimento de soluções internas para automação e eficiência operacional.</li>
+            <li><i class="fa-solid fa-check"></i> Condução de migrações críticas de clientes Fluig do On-Premise para o TCLOUD desde 2022.</li>
+            <li><i class="fa-solid fa-check"></i> Participação na migração em larga escala da estrutura TRD para o TCLOUD, contribuindo para metas estratégicas do produto.</li>
+            <li><i class="fa-solid fa-check"></i> Atuação como P.O técnico na definição e priorização de cards para projetos, melhorias e automações dos segmentos Agro, Fluig e Bioenergia.</li>
+            <li><i class="fa-solid fa-check"></i> Responsável pelo onboarding técnico de novos analistas e disseminação de boas práticas do time.</li>
+            <li><i class="fa-solid fa-check"></i> Suporte cross-team em ambientes críticos da TOTVS, incluindo HLCLOUD, Portal do Cliente, Gestão de Downloads, ADM Gente (CST) e Fluig.</li>
+            <li><i class="fa-solid fa-check"></i> Ponto focal no onboarding de clientes Fluig no TCLOUD, conduzindo apresentações técnicas e promovendo adoção correta de ferramentas e processos.</li>
+            <li><i class="fa-solid fa-check"></i> Plantonista desde 2022 com atuação em incidentes críticos para garantir continuidade dos serviços.</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- =========================================================
-       EXPERIÊNCIA
-  ========================================================= -->
-  <section id="experiencia">
-    <div class="reveal">
-      <p class="section-label"><i class="fa-solid fa-briefcase"></i> Carreira</p>
-      <h2 class="section-title">Experiência Profissional</h2>
-      <div class="section-divider"></div>
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-company">TOTVS</div>
-              <div class="timeline-role">Analista de Infraestrutura Cloud</div>
+        <div class="timeline">
+          <article class="timeline-group">
+            <div class="timeline-group-head">
+              <div>
+                <h3 class="timeline-company"><a href="https://www.totvs.com/" target="_blank" rel="noopener noreferrer">TOTVS</a></h3>
+                <p class="timeline-group-meta">Atual</p>
+              </div>
             </div>
-            <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Jun. 2021 — Atual</span>
-          </div>
-          <p class="timeline-desc">
-            Responsável pela gestão de processos de projetos FLUIG em Cloud, integrando
-            novos clientes ao ambiente TCLOUD e garantindo a integridade dos servidores e
-            a correta integração do FLUIG com os demais sistemas e aplicações dos clientes.
-            Atua na sustentação do FLUIG para clientes hospedados no TCLOUD, realizando
-            atendimentos via chamados de suporte. Como plantonista, executa diagnósticos
-            rápidos e implementa soluções imediatas para minimizar impactos de
-            indisponibilidade.
-          </p>
-        </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-company">TOTVS</div>
-              <div class="timeline-role">Analista de Desenvolvimento de Software</div>
+            <div class="timeline-roles">
+              <article class="timeline-item timeline-item-nested">
+                <div class="timeline-head">
+                  <div>
+                    <p class="timeline-role">Analista de Infraestrutura Cloud</p>
+                  </div>
+                  <span class="timeline-period">Jun. 2021 - Atual </span>
+                </div>
+                <p class="timeline-desc">
+                  Gestão de processos FLUIG em Cloud, onboarding técnico no TCLOUD, sustentação
+                  de plataforma e diagnóstico rápido de incidentes para minimizar impacto em produção.
+                </p>
+                <ul class="timeline-bullets">
+                  <li><i class="fa-solid fa-angle-right"></i> Criação do S.P.I.D.E.R, aplicação web para gerenciamento de certificados digitais com padronização do processo e redução de falhas.</li>
+                  <li><i class="fa-solid fa-angle-right"></i> Desenvolvimento do TCPING (Web e Desktop) para validação de conectividade em RDMs, ampliando confiabilidade dos testes.</li>
+                  <li><i class="fa-solid fa-angle-right"></i> Condução do ciclo completo de migrações para TCLOUD: kickoff, planejamento, go-live e operação assistida.</li>
+                </ul>
+              </article>
+
+              <article class="timeline-item timeline-item-nested">
+                <div class="timeline-head">
+                  <div>
+                    <p class="timeline-role">Analista de Desenvolvimento de Software</p>
+                  </div>
+                  <span class="timeline-period">Mar. 2021 - Mai. 2021 · 3 meses</span>
+                </div>
+                <p class="timeline-desc">
+                  Desenvolvimento front-end para projetos personalizados no FLUIG,
+                  entregando interfaces e experiências sob medida para clientes.
+                </p>
+              </article>
             </div>
-            <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Mar. 2021 — Mai. 2021</span>
-          </div>
-          <p class="timeline-desc">
-            Desenvolvimento Front-End do FLUIG para pedidos de projetos personalizados
-            dos clientes TOTVS, entregando interfaces customizadas e soluções sob medida.
-          </p>
-        </div>
-      </div>
+          </article>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-company">SKA Automação de Engenharia</div>
-              <div class="timeline-role">Analista de Sistemas de Automação</div>
+          <article class="timeline-item">
+            <div class="timeline-head">
+              <div>
+                <h3 class="timeline-company"><a href="https://www.ska.com.br/" target="_blank" rel="noopener noreferrer">SKA Automação de Engenharia</a></h3>
+                <p class="timeline-role">Analista de Sistemas de Automação</p>
+              </div>
+              <span class="timeline-period">Set. 2020 - Mar. 2021 · 7 meses</span>
             </div>
-            <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Set. 2020 — Mar. 2021</span>
-          </div>
-          <p class="timeline-desc">
-            Implantação do sistema MES (Syneco 2020) em projetos em Santa Catarina.
-            Treinamento de usuários, validação de infraestrutura (SQL, OPC UA e MODBUS),
-            formatação de terminais Linux e desenvolvimento de soluções personalizadas.
-            Planejamento e execução de projetos de manufatura, promovendo integração
-            eficiente entre processos e sistemas.
-          </p>
-        </div>
-      </div>
+            <p class="timeline-desc">
+              Implantação de sistema MES, treinamentos, validações de infraestrutura
+              (SQL, OPC UA, MODBUS), suporte a Linux e execução de projetos de manufatura.
+            </p>
+          </article>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-company">Grupo JAV</div>
-              <div class="timeline-role">Analista de Sistemas</div>
+          <article class="timeline-group">
+            <div class="timeline-group-head">
+              <div>
+                <h3 class="timeline-company"><a href="https://www.jav.com.br/" target="_blank" rel="noopener noreferrer">Grupo JAV</a></h3>
+                <p class="timeline-group-meta">2 funções · 1 ano e 9 meses</p>
+              </div>
             </div>
-            <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Jun. 2019 — Jul. 2020</span>
-          </div>
-          <p class="timeline-desc">
-            Suporte e atendimento a usuários via chamados na plataforma Fluig. Configuração
-            de acessos no Protheus e suporte nos módulos de Gestão Pessoal e Contabilidade.
-            Análise e desenvolvimento de fontes para melhorias em rotinas, manutenção de
-            bancos de dados, criação de relatórios no Power BI e gerenciamento de
-            versionamento de código com Bitbucket.
-          </p>
-        </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-company">Grupo JAV</div>
-              <div class="timeline-role">Vendedor Interno</div>
+            <div class="timeline-roles">
+              <article class="timeline-item timeline-item-nested">
+                <div class="timeline-head">
+                  <div>
+                    <p class="timeline-role">Analista de Sistemas</p>
+                  </div>
+                  <span class="timeline-period">Jun. 2019 - Jul. 2020 · 1 ano e 2 meses</span>
+                </div>
+                <p class="timeline-desc">
+                  Suporte Fluig e Protheus, manutenção de banco de dados, relatórios em Power BI
+                  e colaboração com versionamento em Bitbucket.
+                </p>
+              </article>
+
+              <article class="timeline-item timeline-item-nested">
+                <div class="timeline-head">
+                  <div>
+                    <p class="timeline-role">Vendedor Interno</p>
+                  </div>
+                  <span class="timeline-period">Nov. 2018 - Jun. 2019 · 8 meses</span>
+                </div>
+                <p class="timeline-desc">
+                  Atendimento comercial, prospecção, análise de demanda em Indústria 4.0
+                  e relacionamento com carteira de clientes do Vale do Itajaí.
+                </p>
+              </article>
             </div>
-            <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Nov. 2018 — Jun. 2019</span>
-          </div>
-          <p class="timeline-desc">
-            Atendimento de carteira de clientes no Vale do Itajaí, prospecção de novos
-            clientes e análise de necessidades da Indústria 4.0. Portfólio com produtos
-            de automação industrial como Rockwell, Flir, Nvent, Brady, Corfio, Testo e Murr.
-          </p>
-        </div>
-      </div>
+          </article>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-company">Micro Automação</div>
-              <div class="timeline-role">Vendedor Interno</div>
+          <article class="timeline-item">
+            <div class="timeline-head">
+              <div>
+                <h3 class="timeline-company"><a href="https://br.microautomacion.com" target="_blank" rel="noopener noreferrer">Micro Automação</a></h3>
+                <p class="timeline-role">Vendedor Interno</p>
+              </div>
+              <span class="timeline-period">Nov. 2016 - Mar. 2018 · 1 ano e 5 meses</span>
             </div>
-            <span class="timeline-period"><i class="fa-regular fa-calendar"></i> Nov. 2016 — Mar. 2018</span>
-          </div>
-          <p class="timeline-desc">
-            Elaboração de orçamentos via Protheus, suporte direto a vendedores externos
-            de Santa Catarina, prospecção de novos clientes, criação de indicadores para
-            reuniões mensais, implantação de ordens de compra e feedback de orçamentos
-            pendentes.
+            <p class="timeline-desc">
+              Elaboração de orçamentos, suporte comercial, acompanhamento de indicadores
+              e organização de processos de compra.
+            </p>
+          </article>
+
+          <article class="timeline-group">
+            <div class="timeline-group-head">
+              <div>
+                <h3 class="timeline-company"><a href="https://confiar.net.br/" target="_blank" rel="noopener noreferrer">ConfiAr Pneumática</a></h3>
+                <p class="timeline-group-meta">2 funções · 1 ano e 6 meses</p>
+              </div>
+            </div>
+
+            <div class="timeline-roles">
+              <article class="timeline-item timeline-item-nested">
+                <div class="timeline-head">
+                  <div>
+                    <p class="timeline-role">Vendedor Interno</p>
+                  </div>
+                  <span class="timeline-period">Out. 2015 - Nov. 2016 · 1 ano e 2 meses</span>
+                </div>
+                <p class="timeline-desc">
+                  Atuação em Joinville, Santa Catarina, com foco em orçamento de balcão, atendimento por telefone,
+                  emissão de NF no EASY ERP e apoio à operação da loja, incluindo estoque, separação de pedidos
+                  e venda de soluções pneumáticas SIGMA Tools e AIRTEC Pneumatics.
+                </p>
+              </article>
+
+              <article class="timeline-item timeline-item-nested">
+                <div class="timeline-head">
+                  <div>
+                    <p class="timeline-role">Estagiário de Vendas</p>
+                  </div>
+                  <span class="timeline-period">Jun. 2015 - Out. 2015 · 5 meses</span>
+                </div>
+                <p class="timeline-desc">
+                  Início da trajetória comercial com apoio em atendimento ao cliente, orçamentos,
+                  emissão de notas, organização de estoque e criação de layouts para produtos da loja,
+                  com efetivação após os primeiros meses de estágio.
+                </p>
+              </article>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker"><i class="fa-solid fa-microchip"></i> Competências</p>
+          <h2 class="section-title">Habilidades técnicas</h2>
+          <p class="section-sub">
+            Base técnica consolidada para ambientes corporativos, suporte crítico,
+            integração e desenvolvimento.
           </p>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-solid fa-database"></i> SQL / MySQL</div>
+              <span class="skill-percent">52%</span>
+            </div>
+            <div class="meter"><span data-pct="52"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-brands fa-css3-alt"></i> CSS</div>
+              <span class="skill-percent">68%</span>
+            </div>
+            <div class="meter"><span data-pct="68"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-brands fa-linux"></i> Linux</div>
+              <span class="skill-percent">66%</span>
+            </div>
+            <div class="meter"><span data-pct="66"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-brands fa-js"></i> JavaScript</div>
+              <span class="skill-percent">60%</span>
+            </div>
+            <div class="meter"><span data-pct="60"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-solid fa-cloud"></i> Cloud / TCLOUD</div>
+              <span class="skill-percent">88%</span>
+            </div>
+            <div class="meter"><span data-pct="88"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-solid fa-chart-column"></i> Power BI</div>
+              <span class="skill-percent">40%</span>
+            </div>
+            <div class="meter"><span data-pct="40"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-solid fa-code-branch"></i> Git / Bitbucket</div>
+              <span class="skill-percent">35%</span>
+            </div>
+            <div class="meter"><span data-pct="35"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-solid fa-network-wired"></i> OPC UA / MODBUS</div>
+              <span class="skill-percent">65%</span>
+            </div>
+            <div class="meter"><span data-pct="65"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-brands fa-microsoft"></i> Microsoft Office</div>
+              <span class="skill-percent">60%</span>
+            </div>
+            <div class="meter"><span data-pct="60"></span></div>
+          </article>
+
+          <article class="skill reveal">
+            <div class="skill-head">
+              <div class="skill-label"><i class="fa-solid fa-language"></i> Inglês</div>
+              <span class="skill-percent">55%</span>
+            </div>
+            <div class="meter"><span data-pct="55"></span></div>
+          </article>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <section id="certificados">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker"><i class="fa-solid fa-certificate"></i> Formação</p>
+          <h2 class="section-title">Certificados e formação</h2>
+          <p class="section-sub">
+            Formação acadêmica e técnica aplicada na prática para resolver problemas reais,
+            aumentar eficiência e elevar padrão de entrega.
+          </p>
+          <div class="section-line"></div>
+        </div>
 
-  <!-- =========================================================
-       HABILIDADES
-  ========================================================= -->
-  <section id="habilidades">
-    <div class="reveal">
-      <p class="section-label"><i class="fa-solid fa-microchip"></i> Competências</p>
-      <h2 class="section-title">Habilidades Técnicas</h2>
-      <div class="section-divider"></div>
-    </div>
+        <div class="certs-grid">
+          <article class="cert reveal">
+            <i class="fa-solid fa-school"></i>
+            <div>
+              <h4>SENAI/SC - Técnico em Automação Industrial</h4>
+              <p>Automação Industrial · 2012 - 2014</p>
+            </div>
+          </article>
 
-    <div class="skills-grid" id="skills-grid">
+          <article class="cert reveal">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+              <h4>Análise e Desenvolvimento de Sistemas</h4>
+              <p>Ensino superior</p>
+            </div>
+          </article>
 
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
-            SQL / MySQL
+          <article class="cert reveal">
+            <i class="fa-solid fa-cloud"></i>
+            <div>
+              <h4>Cloud Infrastructure - TOTVS</h4>
+              <p>Gestão de ambientes FLUIG na nuvem</p>
+            </div>
+          </article>
+
+          <article class="cert reveal">
+            <i class="fa-solid fa-industry"></i>
+            <div>
+              <h4>Sistema MES - Syneco 2020</h4>
+              <p>SKA Automação de Engenharia</p>
+            </div>
+          </article>
+
+          <article class="cert reveal">
+            <i class="fa-brands fa-js"></i>
+            <div>
+              <h4>Desenvolvimento Front-End FLUIG</h4>
+              <p>JavaScript, CSS e widgets customizados</p>
+            </div>
+          </article>
+
+          <article class="cert reveal">
+            <i class="fa-solid fa-database"></i>
+            <div>
+              <h4>SQL e Banco de Dados</h4>
+              <p>Análise, manutenção e otimização</p>
+            </div>
+          </article>
+
+          <article class="cert reveal">
+            <i class="fa-solid fa-chart-line"></i>
+            <div>
+              <h4>Power BI e Indicadores</h4>
+              <p>Criação de relatórios e dashboards</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker"><i class="fa-solid fa-envelope"></i> Contato</p>
+          <h2 class="section-title">Vamos conversar?</h2>
+          <p class="section-sub">
+            Se você busca alguém comprometido com qualidade técnica, colaboração e evolução
+            contínua, será um prazer trocar uma ideia.
+          </p>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="glass-card reveal">
+            <h3 class="quick-title" style="margin-bottom: 12px;">Canais de contato</h3>
+            <div class="contact-cards">
+              <a class="social-card" href="tel:+5547996747579">
+                <i class="fa-solid fa-phone"></i>
+                Telefone
+              </a>
+              <a class="social-card" href="https://www.linkedin.com/in/pedro-hochsprung/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+              </a>
+              <a class="social-card" href="https://www.instagram.com/pedrohochsprung/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+              </a>
+            </div>
           </div>
-          <span class="skill-pct">85%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
-            CSS
-          </div>
-          <span class="skill-pct">80%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-brands fa-linux"></i></div>
-            Linux
-          </div>
-          <span class="skill-pct">78%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="78"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
-            JavaScript
-          </div>
-          <span class="skill-pct">75%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-solid fa-cloud"></i></div>
-            Cloud / TCLOUD
-          </div>
-          <span class="skill-pct">88%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-solid fa-chart-bar"></i></div>
-            Power BI
-          </div>
-          <span class="skill-pct">70%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="70"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-solid fa-code-branch"></i></div>
-            Git / Bitbucket
-          </div>
-          <span class="skill-pct">75%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
-            OPC UA / MODBUS
-          </div>
-          <span class="skill-pct">65%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="65"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-brands fa-microsoft"></i></div>
-            Microsoft Office
-          </div>
-          <span class="skill-pct">90%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-header">
-          <div class="skill-name">
-            <div class="skill-icon"><i class="fa-solid fa-language"></i></div>
-            Inglês
-          </div>
-          <span class="skill-pct">65%</span>
-        </div>
-        <div class="skill-bar"><div class="skill-fill" data-pct="65"></div></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================
-       CERTIFICADOS
-  ========================================================= -->
-  <section id="certificados">
-    <div class="reveal">
-      <p class="section-label"><i class="fa-solid fa-certificate"></i> Formação</p>
-      <h2 class="section-title">Certificados & Formação</h2>
-      <div class="section-divider"></div>
-    </div>
-
-    <div class="certs-grid">
-
-      <div class="cert-card reveal">
-        <div class="cert-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-        <div class="cert-info">
-          <h4>Análise e Desenvolvimento de Sistemas</h4>
-          <p>Ensino Superior</p>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="cert-card reveal">
-        <div class="cert-icon"><i class="fa-solid fa-cloud"></i></div>
-        <div class="cert-info">
-          <h4>Cloud Infrastructure — TOTVS</h4>
-          <p>Gerenciamento de ambientes FLUIG na nuvem</p>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon"><i class="fa-solid fa-industry"></i></div>
-        <div class="cert-info">
-          <h4>Sistema MES — Syneco 2020</h4>
-          <p>SKA Automação de Engenharia</p>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon"><i class="fa-brands fa-js"></i></div>
-        <div class="cert-info">
-          <h4>Desenvolvimento Front-End FLUIG</h4>
-          <p>JavaScript, CSS, Widgets customizados</p>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
-        <div class="cert-info">
-          <h4>SQL & Banco de Dados</h4>
-          <p>Análise, manutenção e desenvolvimento</p>
-        </div>
-      </div>
-
-      <div class="cert-card reveal">
-        <div class="cert-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="cert-info">
-          <h4>Power BI & Indicadores</h4>
-          <p>Criação de relatórios e dashboards</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================================================
-       CONTATO
-  ========================================================= -->
-  <section id="contato">
-    <div class="reveal">
-      <p class="section-label"><i class="fa-solid fa-envelope"></i> Contato</p>
-      <h2 class="section-title">Vamos Conversar?</h2>
-      <div class="section-divider" style="margin: 0 auto 16px;"></div>
-      <p style="color:var(--clr-muted); max-width:520px; margin:0 auto 16px; font-size:1rem;">
-        Estou sempre aberto a novas conversas, oportunidades e colaborações.
-        Entre em contato!
-      </p>
-    </div>
-
-    <div class="contact-cards reveal">
-      <a href="tel:+5547996747579" class="contact-card phone">
-        <i class="fa-solid fa-phone"></i>
-        <span>+55 (47) 99674-7579</span>
-      </a>
-      <a href="https://www.linkedin.com/in/pedro-hochsprung/" target="_blank" class="contact-card linkedin">
-        <i class="fa-brands fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://www.instagram.com/pedrohochsprung/" target="_blank" class="contact-card instagram">
-        <i class="fa-brands fa-instagram"></i>
-        <span>Instagram</span>
-      </a>
-      <a href="https://www.facebook.com/Peedro.hochsprung/" target="_blank" class="contact-card facebook">
-        <i class="fa-brands fa-facebook"></i>
-        <span>Facebook</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- =========================================================
-       FOOTER
-  ========================================================= -->
   <footer>
-    <p>Desenvolvido com <span>❤</span> por Pedro Henrique Troglio Hochsprung &nbsp;·&nbsp; <span>© 2025</span></p>
+    <div class="container">
+      Desenvolvido por Pedro Henrique Troglio Hochsprung · <span id="footer-year"></span>
+    </div>
   </footer>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================= -->
-  <script>
-    /* ---- PARTICLES ---- */
-    (function () {
-      const canvas = document.getElementById('particles-canvas');
-      const ctx = canvas.getContext('2d');
-      let W, H, particles;
+  <button class="to-top" id="to-top" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-      function resize() {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-      }
-
-      function Particle() {
-        this.x  = Math.random() * W;
-        this.y  = Math.random() * H;
-        this.vx = (Math.random() - 0.5) * 0.3;
-        this.vy = (Math.random() - 0.5) * 0.3;
-        this.r  = Math.random() * 1.5 + 0.5;
-        this.alpha = Math.random() * 0.4 + 0.1;
-      }
-
-      function init() {
-        resize();
-        particles = Array.from({ length: 120 }, () => new Particle());
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0) p.x = W;
-          if (p.x > W) p.x = 0;
-          if (p.y < 0) p.y = H;
-          if (p.y > H) p.y = 0;
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(99,179,237,${p.alpha})`;
-          ctx.fill();
-        });
-
-        // connect nearby particles
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 120) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `rgba(99,179,237,${0.08 * (1 - dist / 120)})`;
-              ctx.lineWidth = 0.6;
-              ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-
-      window.addEventListener('resize', resize);
-      init();
-      draw();
-    })();
-
-    /* ---- TYPING EFFECT ---- */
-    (function () {
-      const roles = [
-        'Analista de Infraestrutura Cloud',
-        'Especialista FLUIG & TCLOUD',
-        'Desenvolvedor Front-End',
-        'Analista de Sistemas',
-      ];
-      let ri = 0, ci = 0, deleting = false;
-      const el = document.getElementById('typed-role');
-
-      function type() {
-        const current = roles[ri];
-        if (!deleting) {
-          el.textContent = current.slice(0, ++ci);
-          if (ci === current.length) {
-            deleting = true;
-            setTimeout(type, 1800);
-            return;
-          }
-        } else {
-          el.textContent = current.slice(0, --ci);
-          if (ci === 0) {
-            deleting = false;
-            ri = (ri + 1) % roles.length;
-          }
-        }
-        setTimeout(type, deleting ? 50 : 80);
-      }
-      type();
-    })();
-
-    /* ---- COUNTER ANIMATION ---- */
-    function animateCounters() {
-      document.querySelectorAll('[data-target]').forEach(el => {
-        const target = +el.dataset.target;
-        let count = 0;
-        const step = Math.ceil(target / 30);
-        const interval = setInterval(() => {
-          count = Math.min(count + step, target);
-          el.textContent = count + '+';
-          if (count >= target) clearInterval(interval);
-        }, 50);
-      });
-    }
-
-    /* ---- INTERSECTION OBSERVER ---- */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-
-          // animate skill bars when visible
-          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-            bar.style.width = bar.dataset.pct + '%';
-          });
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
-
-    /* ---- COUNTER OBSERVER ---- */
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          counterObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-    counterObserver.observe(document.querySelector('.hero-stats'));
-
-    /* ---- ACTIVE NAV HIGHLIGHT ---- */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(a => {
-            a.style.color = a.getAttribute('href') === '#' + id
-              ? 'var(--clr-white)'
-              : '';
-          });
-        }
-      });
-    }, { threshold: 0.5 });
-
-    sections.forEach(s => navObserver.observe(s));
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
+
+
