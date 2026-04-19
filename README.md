@@ -2,7 +2,7 @@
 
 Repositório do meu currículo online publicado via **GitHub Pages**.
 
-🌐 **Acesse em:** [pedro-hochsprung.github.io](https://pedro-hochsprung.github.io)
+🌐 **Acesse em:** https://goverllly.github.io/pedro-hochsprung.github.io/
 
 ## Sobre o site
 
