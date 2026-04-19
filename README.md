@@ -1,8 +1,8 @@
-# Pedro Henrique Troglio Hochsprung — Currículo Online
+# Pedro Henrique Troglio Hochsprung
 
-Repositório do meu currículo online publicado via **GitHub Pages**.
+Repositório do meu currículo publicado via **GitHub Pages**.
 
-🌐 **Acesse em:** [pedro-hochsprung.github.io](https://pedro-hochsprung.github.io)
+🌐 **Acesse em:** https://goverllly.github.io/pedro-hochsprung.github.io/
 
 ## Sobre o site
 
@@ -24,7 +24,3 @@ Página de currículo profissional desenvolvida com HTML5, CSS3 e JavaScript pur
 ## GitHub Pages
 
 O projeto continua compatível com GitHub Pages porque usa apenas arquivos estáticos e caminhos relativos.
-
-- Não há build step
-- Não há dependência de framework
-- Basta publicar a raiz do repositório
