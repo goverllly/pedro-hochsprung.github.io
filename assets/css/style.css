@@ -43,7 +43,7 @@
       --accent-3: #0284c7;
       --shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
       --ring: 0 0 0 4px rgba(14, 165, 160, 0.12);
-      --bg-gradient: radial-gradient(circle at 10% 0%, rgba(2, 132, 199, 0.14), transparent 36%), radial-gradient(circle at 85% 20%, rgba(234, 88, 12, 0.16), transparent 30%), linear-gradient(145deg, #f5fafc 0%, #eef6fb 55%, #e4f0f8 100%);
+      --bg-gradient: radial-gradient(circle at 8% 2%, rgba(2, 132, 199, 0.22), transparent 34%), radial-gradient(circle at 86% 12%, rgba(234, 88, 12, 0.2), transparent 28%), radial-gradient(circle at 48% 92%, rgba(14, 165, 160, 0.16), transparent 34%), linear-gradient(145deg, #f9fcff 0%, #eef6fb 52%, #e3f0f9 100%);
       --hero-glass: rgba(255, 255, 255, 0.72);
       --hero-border: rgba(2, 132, 199, 0.14);
       --button-gradient: linear-gradient(135deg, var(--accent), var(--accent-3));
@@ -62,6 +62,43 @@
       min-height: 100vh;
       overflow-x: hidden;
       transition: background var(--speed), color var(--speed);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--speed);
+    }
+
+    body[data-theme="light"]::before {
+      opacity: 0.6;
+      background:
+        radial-gradient(ellipse 36% 28% at 18% 16%, rgba(56, 189, 248, 0.26), transparent 70%),
+        radial-gradient(ellipse 30% 24% at 82% 22%, rgba(234, 88, 12, 0.18), transparent 70%),
+        radial-gradient(ellipse 34% 26% at 52% 88%, rgba(14, 165, 160, 0.2), transparent 72%);
+      animation: light-aurora-drift 20s ease-in-out infinite alternate;
+    }
+
+    body[data-theme="light"]::after {
+      opacity: 0.38;
+      background:
+        repeating-linear-gradient(
+          -18deg,
+          rgba(2, 132, 199, 0.04) 0 1px,
+          transparent 1px 24px
+        ),
+        repeating-linear-gradient(
+          18deg,
+          rgba(14, 165, 160, 0.03) 0 1px,
+          transparent 1px 26px
+        );
+      mix-blend-mode: soft-light;
+      animation: light-grid-float 16s linear infinite;
     }
 
     body.menu-open {
@@ -101,12 +138,53 @@
       mix-blend-mode: soft-light;
     }
 
+    body[data-theme="light"] .noise {
+      opacity: 0.32;
+      background-image: radial-gradient(rgba(2, 132, 199, 0.14) 0.5px, transparent 0.5px);
+      mix-blend-mode: multiply;
+    }
+
     #particles-canvas {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       opacity: 0.8;
+    }
+
+    body[data-theme="light"] #particles-canvas {
+      opacity: 0.62;
+    }
+
+    @keyframes light-aurora-drift {
+      0% {
+        transform: translate3d(-1.5%, -1%, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(1%, 1.5%, 0) scale(1.03);
+      }
+
+      100% {
+        transform: translate3d(-1%, 0.8%, 0) scale(1.02);
+      }
+    }
+
+    @keyframes light-grid-float {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(14px, -10px, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body[data-theme="light"]::before,
+      body[data-theme="light"]::after {
+        animation: none;
+      }
     }
 
     .scroll-progress {
@@ -641,6 +719,12 @@
       overflow: hidden;
     }
 
+    a.highlight {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
     .highlight::before {
       content: "";
       position: absolute;
@@ -677,6 +761,130 @@
       color: var(--accent-2);
       font-weight: 700;
       letter-spacing: 0.03em;
+    }
+
+    .spider-highlight {
+      --spider-bg: rgba(7, 13, 26, 0.52);
+      --spider-border: rgba(56, 189, 248, 0.14);
+
+      position: relative;
+      isolation: isolate;
+      cursor: pointer;
+      border-color: var(--spider-border);
+      background: var(--spider-bg);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 24px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      contain: paint;
+    }
+
+    body[data-theme="light"] .spider-highlight {
+      --spider-bg: rgba(255, 255, 255, 0.92);
+      --spider-border: rgba(37, 99, 235, 0.15);
+
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .spider-highlight::before,
+    .spider-highlight::after {
+      content: none;
+    }
+
+    .spider-highlight .spider-highlight-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .spider-highlight > :not(.spider-highlight-canvas) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .spider-highlight:hover,
+    .spider-highlight:focus-visible {
+      border-color: color-mix(in srgb, var(--accent-3) 44%, var(--spider-border));
+    }
+
+    .spider-highlight:hover .spider-highlight-canvas,
+    .spider-highlight:focus-visible .spider-highlight-canvas {
+      opacity: 1;
+    }
+
+    .spider-highlight:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .matrix-highlight {
+      --tcping-bg: rgba(7, 13, 26, 0.52);
+      --tcping-border: rgba(56, 189, 248, 0.14);
+
+      position: relative;
+      isolation: isolate;
+      cursor: pointer;
+      border-color: var(--tcping-border);
+      background: var(--tcping-bg);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 24px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      contain: paint;
+    }
+
+    body[data-theme="light"] .matrix-highlight {
+      --tcping-bg: rgba(255, 255, 255, 0.92);
+      --tcping-border: rgba(37, 99, 235, 0.15);
+
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .matrix-highlight::before,
+    .matrix-highlight::after {
+      content: none;
+    }
+
+    .matrix-highlight .matrix-highlight-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .matrix-highlight > :not(.matrix-highlight-canvas) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .matrix-highlight:hover,
+    .matrix-highlight:focus-visible {
+      border-color: color-mix(in srgb, var(--accent) 42%, var(--tcping-border));
+    }
+
+    .matrix-highlight:hover .matrix-highlight-canvas,
+    .matrix-highlight:focus-visible .matrix-highlight-canvas {
+      opacity: 1;
+    }
+
+    .matrix-highlight:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 24px 60px rgba(0, 0, 0, 0.4);
     }
 
     .timeline {
@@ -1017,14 +1225,16 @@
       grid-template-columns: 1fr;
       gap: 18px;
       align-items: start;
-      max-width: 760px;
+      max-width: 980px;
       margin-inline: auto;
     }
 
     .contact-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: nowrap;
       gap: 10px;
+      overflow: visible;
+      padding-bottom: 0;
     }
 
     .social-card {
@@ -1036,9 +1246,12 @@
       padding: 14px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       font-size: 0.92rem;
       min-height: 60px;
+      flex: 1 1 0;
+      min-width: 0;
       transition: transform var(--speed), border-color var(--speed), background var(--speed);
     }
 
@@ -1053,6 +1266,32 @@
       text-align: center;
       color: var(--accent);
       font-size: 1.08rem;
+    }
+
+    .whatsapp-card {
+      border-color: color-mix(in srgb, #22c55e 38%, var(--line));
+      background: color-mix(in srgb, #22c55e 10%, var(--surface));
+    }
+
+    .whatsapp-card i {
+      color: #22c55e;
+    }
+
+    .whatsapp-card:hover {
+      border-color: #22c55e;
+      background: color-mix(in srgb, #22c55e 18%, var(--surface-2));
+    }
+
+    @media (min-width: 980px) {
+      .contact-cards {
+        gap: 14px;
+      }
+
+      .social-card {
+        min-height: 72px;
+        padding: 16px 18px;
+        font-size: 0.95rem;
+      }
     }
 
     footer {
