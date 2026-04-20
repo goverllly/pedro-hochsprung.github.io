@@ -680,8 +680,6 @@
     }
 
     .timeline {
-      border-left: 2px solid color-mix(in srgb, var(--accent) 30%, var(--line));
-      padding-left: 24px;
       display: grid;
       gap: 18px;
     }
@@ -740,15 +738,7 @@
     }
 
     .timeline-item::before {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      left: -31px;
-      top: 20px;
-      background: var(--button-gradient);
-      border: 2px solid var(--bg);
+      content: none;
     }
 
     .timeline-item:hover {
@@ -775,15 +765,7 @@
     }
 
     .timeline-group::before {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      left: -31px;
-      top: 22px;
-      background: var(--button-gradient);
-      border: 2px solid var(--bg);
+      content: none;
     }
 
     .timeline-group-head {
@@ -820,28 +802,18 @@
     }
 
     .timeline-roles::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: color-mix(in srgb, var(--accent) 20%, transparent);
+      content: none;
     }
 
     .timeline-item-nested {
-      margin-left: 18px;
+      margin-left: 0;
       padding: 16px;
       background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface-2) 52%, transparent));
       border-color: color-mix(in srgb, var(--accent-3) 16%, var(--line));
     }
 
     .timeline-item-nested::before {
-      left: -10px;
-      top: 18px;
-      width: 10px;
-      height: 10px;
-      border-width: 2px;
+      content: none;
     }
 
     .timeline-head {
@@ -1292,7 +1264,7 @@
       }
 
       .timeline-item-nested {
-        margin-left: 12px;
+        margin-left: 0;
       }
 
       .highlights,
@@ -1386,15 +1358,7 @@
       }
 
       .timeline {
-        padding-left: 18px;
-      }
-
-      .timeline-item::before {
-        left: -25px;
-      }
-
-      .timeline-group::before {
-        left: -25px;
+        padding-left: 0;
       }
 
       .timeline-group-head {
@@ -1407,17 +1371,9 @@
         padding: 5px 9px;
       }
 
-      .timeline-roles::before {
-        left: 12px;
-      }
-
       .timeline-item-nested {
-        margin-left: 8px;
+        margin-left: 0;
         padding: 14px;
-      }
-
-      .timeline-item-nested::before {
-        left: -8px;
       }
 
       .timeline-company {
